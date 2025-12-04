@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.chaquo.python")
 }
 
 android {
@@ -17,6 +18,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86_64")
+        }
     }
 
     buildTypes {
@@ -27,6 +32,19 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    chaquopy{
+        defaultConfig{
+            version = "3.11"
+            buildPython("C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python311\\python.exe")
+            pip{
+                install("numpy")
+                install("matplotlib")
+                install("sympy")
+            }
+        }
+
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
