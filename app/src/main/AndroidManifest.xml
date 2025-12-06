@@ -24,8 +24,19 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".CalculadorasMenuActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DerivadasActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConversionesActivity"
             android:exported="false" />
+        <activity
+            android:name=".GraficadorActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
