@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         // Click listeners
         cardCalculadora.setOnClickListener {
-            Toast.makeText(this, "Abriendo Calculadora", Toast.LENGTH_SHORT).show()
-            // Después navegarás a CalculadoraActivity
+            val intent = Intent(this, CalculadorasMenuActivity::class.java)
+            startActivity(intent)
         }
 
         cardConversiones.setOnClickListener {
@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardGraficador.setOnClickListener {
-            Toast.makeText(this, "Abriendo Graficador", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, GraficadorActivity::class.java)
+            startActivity(intent)
         }
 
         cardExamenes.setOnClickListener {
