@@ -36,7 +36,7 @@ android {
     chaquopy{
         defaultConfig{
             version = "3.11"
-            buildPython("/usr/bin/python3.11")
+            buildPython("C:\\Users\\colin\\AppData\\Local\\Programs\\Python\\Python311\\python.exe")
             pip{
                 install("numpy")
                 install("matplotlib")

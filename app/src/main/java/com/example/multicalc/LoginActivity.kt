@@ -27,10 +27,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // 1. Inicialización de Vistas
-        etUsuario = findViewById(R.id.et_username) // Asegúrate que uses el ID correcto
-        etPassword = findViewById(R.id.et_password) // Asegúrate que uses el ID correcto
-        btnLogin = findViewById(R.id.btn_login) // Asegúrate que uses el ID correcto
-        btnRegister = findViewById(R.id.btn_register) // Añadir el botón de registro si existe
+        etUsuario = findViewById(R.id.etUsuario) // Asegúrate que uses el ID correcto
+        etPassword = findViewById(R.id.etPassword) // Asegúrate que uses el ID correcto
+        btnLogin = findViewById(R.id.btnLogin) // Asegúrate que uses el ID correcto
+        btnRegister = findViewById(R.id.btnRegister) // Añadir el botón de registro si existe
 
         // 2. Inicialización de Chaquopy (El "puente" a Python)
         if (!Python.isStarted()) {
@@ -90,7 +90,11 @@ class LoginActivity : AppCompatActivity() {
         val password = etPassword.text.toString().trim()
 
         if (usuario.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Por favor, completa ambos campos para registrarte.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "Por favor, completa ambos campos para registrarte.",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
@@ -98,12 +102,17 @@ class LoginActivity : AppCompatActivity() {
         val isSuccess = authManager.callAttr("registrar_usuario", usuario, password).toBoolean()
 
         if (isSuccess) {
-            Toast.makeText(this, "Usuario '$usuario' registrado exitosamente.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Usuario '$usuario' registrado exitosamente.", Toast.LENGTH_LONG)
+                .show()
             // Opcional: limpiar campos tras el registro
             etUsuario.setText("")
             etPassword.setText("")
         } else {
-            Toast.makeText(this, "Error: El usuario ya existe o la entrada es inválida.", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                "Error: El usuario ya existe o la entrada es inválida.",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
-
+}
