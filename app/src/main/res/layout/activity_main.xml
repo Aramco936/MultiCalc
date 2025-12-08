@@ -125,7 +125,7 @@
 
             <!-- TARJETA 3: AZUL -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardFormulas"
+                android:id="@+id/cardFormulario"
                 android:layout_width="0dp"
                 android:layout_height="180dp"
                 android:layout_columnWeight="1"
