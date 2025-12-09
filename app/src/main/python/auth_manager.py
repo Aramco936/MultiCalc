@@ -5,11 +5,22 @@ import os
 # --- CLASES Y UTILIDADES DEL CORE ---
 
 class Usuario:
-    """Clase simple para representar un usuario, solo con datos esenciales para auth."""
-    def __init__(self, nombre, password_hash, es_admin=False):
+    """Clase simple para representar un usuario con datos de perfil y racha."""
+    def __init__(self, nombre, password_hash, es_admin=False,
+                 racha_dias=0, foto_url="", cursos_completados=None):
+
         self.nombre = nombre
         self.password_hash = password_hash
         self.es_admin = es_admin
+        self.racha_dias = racha_dias
+        self.foto_url = foto_url
+
+        # Guardaremos los cursos como un diccionario: {"modulo_nombre": porcentaje_avance}
+        self.cursos_completados = cursos_completados if cursos_completados is not None else {
+            "Simbolico": 0,
+            "Metodos_Numericos": 0,
+            "Conversores": 0
+        }
 
 class AuthManager:
     """
@@ -38,6 +49,9 @@ class AuthManager:
                             nombre, 
                             info['password_hash'], 
                             info.get('es_admin', False)
+                            info.get('racha_dias', 0),
+                            info.get('foto_url', ""),
+                            info.get('cursos_completados')
                         )
                     return usuarios
         except Exception:
@@ -62,6 +76,9 @@ class AuthManager:
             data_to_save[nombre] = {
                 'password_hash': usuario.password_hash,
                 'es_admin': usuario.es_admin
+                'racha_dias': usuario.racha_dias,
+                'foto_url': usuario.foto_url,
+                'cursos_completados': usuario.cursos_completados
             }
         try:
             with open(self.file_path, 'w') as f:
@@ -117,3 +134,27 @@ class AuthManager:
         self._guardar_usuarios()
         
         return True
+
+    def obtener_datos_perfil(self, nombre_usuario):
+        """
+        Retorna los datos del perfil del usuario como un diccionario.
+        """
+        if nombre_usuario in self.usuarios:
+            usuario = self.usuarios[nombre_usuario]
+            return {
+                "nombre": usuario.nombre,
+                "racha_dias": usuario.racha_dias,
+                "foto_url": usuario.foto_url,
+                "cursos_completados": usuario.cursos_completados
+            }
+        return None
+
+    def actualizar_foto_perfil(self, nombre_usuario, nueva_url):
+        """
+        Actualiza la URL de la foto de perfil y guarda el JSON.
+        """
+        if nombre_usuario in self.usuarios:
+            self.usuarios[nombre_usuario].foto_url = nueva_url
+            self._guardar_usuarios()
+            return True
+        return False
