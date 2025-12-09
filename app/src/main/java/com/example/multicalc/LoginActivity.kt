@@ -75,11 +75,19 @@ class LoginActivity : AppCompatActivity() {
         if (isSuccess) {
             // Login exitoso
             Toast.makeText(this, "¡Bienvenido $usuario!", Toast.LENGTH_SHORT).show()
+
+            // 1. Crear el Intent hacia MainActivity
             val intent = Intent(this, MainActivity::class.java)
+
+            // 2. Adjuntar el nombre de usuario como un "Extra"
+            // Usaremos la clave "EXTRA_USERNAME" para recuperarlo después.
+            intent.putExtra("EXTRA_USERNAME", usuario)
+
+            // 3. Iniciar la actividad y cerrar LoginActivity
             startActivity(intent)
             finish()
+
         } else {
-            // Login fallido (Usuario no existe o contraseña incorrecta)
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
         }
     }
