@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         // Referencias a las tarjetas
         val cardCalculadora = findViewById<CardView>(R.id.cardCalculadora)
         val cardConversiones = findViewById<CardView>(R.id.cardConversiones)
-        val cardFormulas = findViewById<CardView>(R.id.cardFormulas)
+        val cardFormulario = findViewById<CardView>(R.id.cardFormulario)
         val cardGraficador = findViewById<CardView>(R.id.cardGraficador)
         val cardExamenes = findViewById<CardView>(R.id.cardExamenes)
         val cardHistorial = findViewById<CardView>(R.id.cardHistorial)
@@ -46,8 +46,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        cardFormulas.setOnClickListener {
-            Toast.makeText(this, "Abriendo Fórmulas", Toast.LENGTH_SHORT).show()
+        cardFormulario.setOnClickListener {
+            val intent = Intent(this, FormularioActivity::class.java)
+            startActivity(intent)
         }
 
         cardGraficador.setOnClickListener {
