@@ -1,6 +1,8 @@
 package com.example.multicalc
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -37,6 +39,11 @@ class ProfileActivity : AppCompatActivity() {
         tvAvanceSimbolico = findViewById(R.id.tv_avance_simbolico)
         tvAvanceMetodos = findViewById(R.id.tv_avance_metodos)
         tvAvanceConversores = findViewById(R.id.tv_avance_conversores)
+
+
+        findViewById<Button>(R.id.btn_back_profile).setOnClickListener {
+            finish()
+        }
 
 
         // 3. Inicializar Chaquopy y AuthManager (similar al LoginActivity)

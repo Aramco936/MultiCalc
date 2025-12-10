@@ -1,10 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#F5F5F5">
 
+    <!-- Foto de perfil -->
     <ImageView
         android:id="@+id/iv_profile_pic"
         android:layout_width="100dp"
@@ -12,43 +15,54 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_default_user"
-        android:contentDescription="Foto de perfil" />
+        android:src="@drawable/ic_launcher_foreground"
+        android:background="@android:color/darker_gray"
+        android:contentDescription="Foto de perfil"
+        android:layout_marginTop="24dp" />
 
+    <!-- Nombre de usuario -->
     <TextView
         android:id="@+id/tv_profile_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@+id/iv_profile_pic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
         android:text="NombreDeUsuario" />
 
+    <!-- Racha de días -->
     <TextView
         android:id="@+id/tv_racha_dias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        android:textColor="#757575"
         app:layout_constraintTop_toBottomOf="@+id/tv_profile_username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
         android:text="Racha: 0 días" />
 
+    <!-- Título: Avance en Módulos -->
     <TextView
         android:id="@+id/tv_seccion_avance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Avance en Módulos"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="monospace"
         app:layout_constraintTop_toBottomOf="@+id/tv_racha_dias"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="32dp" />
 
+    <!-- Avance Simbólico -->
     <TextView
         android:id="@+id/tv_avance_simbolico"
         android:layout_width="wrap_content"
@@ -56,6 +70,45 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_seccion_avance"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        android:textColor="#424242"
         android:text="Simbólico: 0 %" />
+
+    <!-- Avance Métodos Numéricos -->
+    <TextView
+        android:id="@+id/tv_avance_metodos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avance_simbolico"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textColor="#424242"
+        android:text="Métodos Numéricos: 0 %" />
+
+    <!-- Avance Conversores -->
+    <TextView
+        android:id="@+id/tv_avance_conversores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avance_metodos"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textColor="#424242"
+        android:text="Conversores: 0 %" />
+
+    <!-- Botón volver (opcional) -->
+    <Button
+        android:id="@+id/btn_back_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        android:textAllCaps="false"
+        android:backgroundTint="#00BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

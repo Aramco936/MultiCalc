@@ -1,7 +1,9 @@
 package com.example.multicalc
 
+import android.widget.Button
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         currentUsername = intent.getStringExtra("EXTRA_USERNAME") ?: "Usuario Desconocido"
 
         // 2. Ejemplo: Configurar un botón de perfil
-        val btnProfile = findViewById<Button>(R.id.btn_profile_access)
+        val btnProfile = findViewById<ImageButton>(R.id.btn_profile_access)
         btnProfile.setOnClickListener {
             // 3. Llamar a la función de navegación
             navigateToProfile()

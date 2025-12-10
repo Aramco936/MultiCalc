@@ -48,7 +48,7 @@ class AuthManager:
                         usuarios[nombre] = Usuario(
                             nombre, 
                             info['password_hash'], 
-                            info.get('es_admin', False)
+                            info.get('es_admin', False),  # ← COMA AGREGADA
                             info.get('racha_dias', 0),
                             info.get('foto_url', ""),
                             info.get('cursos_completados')
@@ -57,25 +57,25 @@ class AuthManager:
         except Exception:
             # En caso de error de lectura o archivo corrupto, inicializar vacío
             pass
-        
+
         # Si no hay usuarios válidos, crear el administrador por defecto
         admin_hash = self.hash_password('admin123')
         admin = Usuario('admin', admin_hash, True)
         usuarios['admin'] = admin
         self._guardar_usuarios(usuarios) # Guardar el admin por defecto
-        
+
         return usuarios
-    
+
     def _guardar_usuarios(self, usuarios_data=None):
         """Guarda los usuarios actuales en el archivo JSON."""
         if usuarios_data is None:
             usuarios_data = self.usuarios
-            
+
         data_to_save = {}
         for nombre, usuario in usuarios_data.items():
             data_to_save[nombre] = {
                 'password_hash': usuario.password_hash,
-                'es_admin': usuario.es_admin
+                'es_admin': usuario.es_admin,  # ← COMA AGREGADA
                 'racha_dias': usuario.racha_dias,
                 'foto_url': usuario.foto_url,
                 'cursos_completados': usuario.cursos_completados
