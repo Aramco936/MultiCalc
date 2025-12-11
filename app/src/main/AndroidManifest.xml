@@ -31,6 +31,9 @@
             android:name=".DerivadasActivity"
             android:exported="false" />
         <activity
+            android:name=".IntegralesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConversionesActivity"
             android:exported="false" />
         <activity

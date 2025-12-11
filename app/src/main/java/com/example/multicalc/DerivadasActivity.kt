@@ -7,6 +7,8 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 
 class DerivadasActivity : AppCompatActivity() {
 
@@ -19,11 +21,18 @@ class DerivadasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_derivadas)
 
+        //Habilitar chaquopy
+        if (!Python.isStarted()) {
+            Python.start(AndroidPlatform(this))
+        }
+
+
         // Inicializar vistas
         etFuncion = findViewById(R.id.etFuncion)
         etLiteral = findViewById(R.id.etLiteral)
         btnCalcular = findViewById(R.id.btnCalcular)
         txtResultado = findViewById(R.id.txtResultado)
+        //txtResultado = findViewById(R.id.webLatex)
 
         // Botón volver
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
@@ -35,33 +44,49 @@ class DerivadasActivity : AppCompatActivity() {
             calcularDerivada()
         }
     }
-
     private fun calcularDerivada() {
+
         val funcion = etFuncion.text.toString().trim()
         val literal = etLiteral.text.toString().trim()
 
-        // Validaciones básicas
+        // Validaciones
         if (funcion.isEmpty()) {
             Toast.makeText(this, "Ingresa una función", Toast.LENGTH_SHORT).show()
             return
         }
-
         if (literal.isEmpty()) {
             Toast.makeText(this, "Ingresa un literal", Toast.LENGTH_SHORT).show()
             return
         }
-
         if (literal.length != 1) {
             Toast.makeText(this, "El literal debe ser una sola letra", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // 1. Inicializar Python (Chaquopy)
-        // 2. Llamar al módulo Python con la función y literal
-        // 3. Mostrar el resultado en txtResultado
+        try {
+            val py = com.chaquo.python.Python.getInstance()
+            val modulo = py.getModule("calculadora_simbolica")
 
-        // Por ahora, mensaje temporal
-        txtResultado.text = "Esperando implementación de Python...\n\nFunción: $funcion\nLiteral: $literal"
-        Toast.makeText(this, "Lógica pendiente - Orlando", Toast.LENGTH_SHORT).show()
+
+            val resultado = modulo.callAttr("derivar", funcion, literal)
+
+            // Detectar si es booleano
+            val esBoolean = try {
+                resultado.toJava(Boolean::class.java) != null
+            } catch (e: Exception) {
+                false
+            }
+
+            if (esBoolean && resultado.toBoolean() == false) {
+                txtResultado.text = "Error: entrada inválida"
+            } else {
+                txtResultado.text = resultado.toString()
+            }
+
+        } catch (e: Exception) {
+            txtResultado.text = "Error en Python:\n${e.message}"
+        }
     }
+
+
 }

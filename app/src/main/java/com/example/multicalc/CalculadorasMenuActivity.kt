@@ -32,8 +32,8 @@ class CalculadorasMenuActivity : AppCompatActivity() {
         }
 
         btnIntegrales.setOnClickListener {
-            // TODO: Crear IntegralesActivity
-            Toast.makeText(this, "Integrales - Próximamente", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, IntegralesActivity::class.java)
+            startActivity(intent)
         }
 
         btnOtro1.setOnClickListener {
