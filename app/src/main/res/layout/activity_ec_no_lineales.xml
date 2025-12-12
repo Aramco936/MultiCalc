@@ -1,0 +1,104 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ENCABEZADO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sistema de ecuaciones no lineales 2x2"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Regresar" />
+        </LinearLayout>
+
+        <!-- CAMPOS -->
+        <EditText
+            android:id="@+id/etFuncion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Función 1 (ej: x + y - 3)" />
+
+        <EditText
+            android:id="@+id/etFuncion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Función 2 (ej: x^2 + y^2 - 5)" />
+
+        <EditText
+            android:id="@+id/etLiteral1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Literal 1 (x)"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/etLiteral2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Literal 2 (y)"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/etX0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="x₀"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <EditText
+            android:id="@+id/etY0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="y₀"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <EditText
+            android:id="@+id/etTol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tolerancia"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/etIter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Iteraciones máximas"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcular"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:paddingTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

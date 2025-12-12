@@ -45,6 +45,17 @@
        <activity
                 android:name=".ProfileActivity"
                 android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BiseccionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewtonRaphsonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EcNoLinealesActivity"
+            android:exported="false" />
         </application>
-
 </manifest>

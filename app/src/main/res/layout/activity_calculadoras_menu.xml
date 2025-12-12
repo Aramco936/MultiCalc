@@ -90,13 +90,13 @@
 
 
             <Button
-                android:id="@+id/btnOtro1"
+                android:id="@+id/btnBiseccion"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="#FF8A80"
                 android:fontFamily="monospace"
-                android:text="Otro"
+                android:text="Biseccion"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
@@ -104,13 +104,13 @@
                 app:cornerRadius="20dp" />
 
             <Button
-                android:id="@+id/btnOtro2"
+                android:id="@+id/btnNewtonRaphson"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="#FF8A80"
                 android:fontFamily="monospace"
-                android:text="Otro"
+                android:text="Newton Raphson"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
@@ -118,12 +118,12 @@
                 app:cornerRadius="20dp" />
 
             <Button
-                android:id="@+id/btnOtro3"
+                android:id="@+id/EcNoLi"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:backgroundTint="#FF8A80"
                 android:fontFamily="monospace"
-                android:text="Otro"
+                android:text="Sistema de ecuaciones no lineales 2x2"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"

@@ -21,9 +21,9 @@ class CalculadorasMenuActivity : AppCompatActivity() {
         // Referencias a los botones
         val btnDerivadas = findViewById<Button>(R.id.btnDerivadas)
         val btnIntegrales = findViewById<Button>(R.id.btnIntegrales)
-        val btnOtro1 = findViewById<Button>(R.id.btnOtro1)
-        val btnOtro2 = findViewById<Button>(R.id.btnOtro2)
-        val btnOtro3 = findViewById<Button>(R.id.btnOtro3)
+        val btnBiseccion = findViewById<Button>(R.id.btnBiseccion)
+        val btnNewtonRaphson = findViewById<Button>(R.id.btnNewtonRaphson)
+        val btnEcNoLi = findViewById<Button>(R.id.EcNoLi)
 
         // Click listeners
         btnDerivadas.setOnClickListener {
@@ -36,16 +36,19 @@ class CalculadorasMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnOtro1.setOnClickListener {
-            Toast.makeText(this, "Calculadora en desarrollo", Toast.LENGTH_SHORT).show()
+        btnBiseccion.setOnClickListener {
+            val intent = Intent(this, BiseccionActivity::class.java)
+            startActivity(intent)
         }
 
-        btnOtro2.setOnClickListener {
-            Toast.makeText(this, "Calculadora en desarrollo", Toast.LENGTH_SHORT).show()
+        btnNewtonRaphson.setOnClickListener {
+            val intent = Intent(this, NewtonRaphsonActivity::class.java)
+            startActivity(intent)
         }
 
-        btnOtro3.setOnClickListener {
-            Toast.makeText(this, "Calculadora en desarrollo", Toast.LENGTH_SHORT).show()
+        btnEcNoLi.setOnClickListener {
+            val intent = Intent(this, EcNoLinealesActivity::class.java)
+            startActivity(intent)
         }
     }
 }
