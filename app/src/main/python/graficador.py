@@ -1,3 +1,4 @@
+'''
 import sympy as sp
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,4 +27,35 @@ def graficar_archivo(expresion, literal, lim_inferior, lim_superior, ruta_archiv
         return ruta_archivo
 
     except Exception as e:
+        return False
+
+'''
+import sympy as sp
+import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+def graficar_archivo(expresion, literal, lim_inferior, lim_superior, ruta_archivo):
+    try:
+        x = sp.symbols(literal)
+        expr = sp.sympify(expresion.replace("^", "**"))
+
+        xs = np.arange(lim_inferior, lim_superior, 0.01)
+        ys = [expr.subs(x, val) for val in xs]
+
+        plt.figure()
+        plt.plot(xs, ys)
+        plt.grid(True)
+        plt.xlabel(literal)
+        plt.ylabel("f(x)")
+        plt.title(f"f(x) = {expresion}")
+
+        # Guardar imagen en la ruta recibida de Android
+        plt.savefig(ruta_archivo)
+        plt.close()
+
+        return True
+    except Exception as e:
+        print("ERROR:", e)
         return False
