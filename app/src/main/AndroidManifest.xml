@@ -46,6 +46,13 @@
                 android:name=".ProfileActivity"
                 android:exported="false" />
         <activity
+            android:name=".ExamenesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PreguntasActivity"
+            android:exported="false" />
+      
+        <activity
             android:name=".HistoryActivity"
             android:exported="false" />
 
