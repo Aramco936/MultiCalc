@@ -75,7 +75,7 @@ class AuthManager:
         for nombre, usuario in usuarios_data.items():
             data_to_save[nombre] = {
                 'password_hash': usuario.password_hash,
-                'es_admin': usuario.es_admin,  # ← COMA AGREGADA
+                'es_admin': usuario.es_admin,
                 'racha_dias': usuario.racha_dias,
                 'foto_url': usuario.foto_url,
                 'cursos_completados': usuario.cursos_completados

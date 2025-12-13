@@ -57,7 +57,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardExamenes.setOnClickListener {
-            Toast.makeText(this, "Abriendo Exámenes", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ExamenesActivity::class.java)
+            startActivity(intent)
         }
 
         cardHistorial.setOnClickListener {
