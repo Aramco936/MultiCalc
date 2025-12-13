@@ -7,21 +7,26 @@ import os
 class Usuario:
     """Clase simple para representar un usuario con datos de perfil y racha."""
     def __init__(self, nombre, password_hash, es_admin=False,
-                 racha_dias=0, foto_url="", cursos_completados=None):
+                 racha_dias=0, foto_url="", cursos_completados=None, stats_examenes=None):
 
         self.nombre = nombre
         self.password_hash = password_hash
         self.es_admin = es_admin
         self.racha_dias = racha_dias
         self.foto_url = foto_url
-
         # Guardaremos los cursos como un diccionario: {"modulo_nombre": porcentaje_avance}
         self.cursos_completados = cursos_completados if cursos_completados is not None else {
             "Simbolico": 0,
             "Metodos_Numericos": 0,
             "Conversores": 0
         }
-
+        # Nuevas estadisticas para examenes
+        self.stats_examenes = stats_examenes if stats_examenes else {
+            "racha_examen": 0,
+            "facil_completados": 0,
+            "medio_completados": 0,
+            "dificil_completados": 0
+        }
 class AuthManager:
     """
     Gestiona la carga/guardado de usuarios y la lógica de login/registro.
@@ -51,7 +56,8 @@ class AuthManager:
                             info.get('es_admin', False),  # ← COMA AGREGADA
                             info.get('racha_dias', 0),
                             info.get('foto_url', ""),
-                            info.get('cursos_completados')
+                            info.get('cursos_completados'),
+                            info.get('stats_examenes')
                         )
                     return usuarios
         except Exception:
@@ -78,7 +84,8 @@ class AuthManager:
                 'es_admin': usuario.es_admin,
                 'racha_dias': usuario.racha_dias,
                 'foto_url': usuario.foto_url,
-                'cursos_completados': usuario.cursos_completados
+                'cursos_completados': usuario.cursos_completados,
+                'stats_examenes': u.stats_examenes
             }
         try:
             with open(self.file_path, 'w') as f:
@@ -86,6 +93,49 @@ class AuthManager:
             return True
         except Exception:
             return False
+
+
+    # --- NUEVAS FUNCIONES DE EDICIÓN ---
+
+    def cambiar_nombre_usuario(self, actual_nombre, nuevo_nombre):
+        """Migra los datos de un usuario a una nueva clave (nuevo nombre)."""
+        if nuevo_nombre in self.usuarios:
+            return False # El nombre ya existe
+
+        if actual_nombre in self.usuarios:
+            usuario_obj = self.usuarios[actual_nombre]
+            usuario_obj.nombre = nuevo_nombre # Actualizar atributo
+
+            # Mover a nueva clave en el diccionario
+            self.usuarios[nuevo_nombre] = usuario_obj
+            del self.usuarios[actual_nombre] # Borrar clave vieja
+
+            self._guardar_usuarios()
+            return True
+        return False
+
+    def cambiar_password(self, usuario, actual_pass, nueva_pass):
+        if usuario in self.usuarios:
+            pass_hash = self.hash_password(actual_pass)
+            if self.usuarios[usuario].password_hash == pass_hash:
+                self.usuarios[usuario].password_hash = self.hash_password(nueva_pass)
+                self._guardar_usuarios()
+                return True
+        return False
+
+    def registrar_examen_completado(self, usuario, dificultad):
+        """Actualiza las estadísticas de exámenes."""
+        if usuario in self.usuarios:
+            u = self.usuarios[usuario]
+            u.stats_examenes["racha_examen"] += 1
+
+            key = f"{dificultad.lower()}_completados" # facil_completados
+            if key in u.stats_examenes:
+                u.stats_examenes[key] += 1
+
+            self._guardar_usuarios()
+            return True
+        return False
 
     # --- FUNCIONES CLAVE PARA ANDROID ---
 
@@ -145,7 +195,8 @@ class AuthManager:
                 "nombre": usuario.nombre,
                 "racha_dias": usuario.racha_dias,
                 "foto_url": usuario.foto_url,
-                "cursos_completados": usuario.cursos_completados
+                "cursos_completados": usuario.cursos_completados,
+                "stats_examenes": u.stats_examenes
             }
         return None
 

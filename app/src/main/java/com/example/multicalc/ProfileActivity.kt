@@ -1,6 +1,7 @@
 package com.example.multicalc
 
 import android.os.Bundle
+import android.app.AlertDialog
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -24,6 +25,13 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var tvAvanceMetodos: TextView
     private lateinit var tvAvanceConversores: TextView
 
+    // Nuevas variables de vista
+    private lateinit var tvExamStreak: TextView
+    private lateinit var tvExamLevels: TextView
+    private lateinit var btnEditUser: Button
+    private lateinit var btnChangePass: Button
+    private lateinit var btnLogout: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -39,8 +47,17 @@ class ProfileActivity : AppCompatActivity() {
         tvAvanceSimbolico = findViewById(R.id.tv_avance_simbolico)
         tvAvanceMetodos = findViewById(R.id.tv_avance_metodos)
         tvAvanceConversores = findViewById(R.id.tv_avance_conversores)
+        // Inicializar nuevas vistas
+        tvExamStreak = findViewById(R.id.tv_exam_streak)
+        tvExamLevels = findViewById(R.id.tv_exam_levels)
+        btnEditUser = findViewById(R.id.btn_edit_username)
+        btnChangePass = findViewById(R.id.btn_change_password)
+        btnLogout = findViewById(R.id.btn_logout)
 
-
+        // Listeners
+        btnEditUser.setOnClickListener { showEditUsernameDialog() }
+        btnChangePass.setOnClickListener { showChangePasswordDialog() }
+        btnLogout.setOnClickListener { logout() }
         findViewById<Button>(R.id.btn_back_profile).setOnClickListener {
             finish()
         }
@@ -71,6 +88,7 @@ class ProfileActivity : AppCompatActivity() {
 
             // Obtener el diccionario de avances (cursos)
             val cursos = profileData.callAttr("get", "cursos_completados")
+            val statsExamenes = profileData.callAttr("get", "stats_examenes")
 
             tvRacha.text = "Racha: $racha días"
 
@@ -79,6 +97,15 @@ class ProfileActivity : AppCompatActivity() {
                 tvAvanceSimbolico.text = "Simbólico: ${cursos.callAttr("get", "Simbolico")} %"
                 tvAvanceMetodos.text = "Métodos Numéricos: ${cursos.callAttr("get", "Metodos_Numericos")} %"
                 tvAvanceConversores.text = "Conversores: ${cursos.callAttr("get", "Conversores")} %"
+            }
+            if (statsExamenes != null) {
+                val rachaEx = statsExamenes.callAttr("get", "racha_examen").toString()
+                val facil = statsExamenes.callAttr("get", "facil_completados").toString()
+                val medio = statsExamenes.callAttr("get", "medio_completados").toString()
+                val dificil = statsExamenes.callAttr("get", "dificil_completados").toString()
+
+                tvExamStreak.text = "🔥 Racha Exámenes: $rachaEx"
+                tvExamLevels.text = "Fácil: $facil | Medio: $medio | Difícil: $dificil"
             }
 
             // NOTA: Para la foto, usarías una librería de carga de imágenes (como Glide o Picasso)
@@ -108,5 +135,71 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+    // --- FUNCIÓN CERRAR SESIÓN ---
+    private fun logout() {
+        val intent = Intent(this, LoginActivity::class.java)
+        // Limpiar la pila de actividades para que no pueda volver atrás
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
 
+    // --- DIÁLOGO CAMBIAR NOMBRE ---
+    private fun showEditUsernameDialog() {
+        val input = EditText(this)
+        input.hint = "Nuevo nombre de usuario"
+
+        AlertDialog.Builder(this)
+            .setTitle("Cambiar Nombre")
+            .setView(input)
+            .setPositiveButton("Guardar") { _, _ ->
+                val newName = input.text.toString().trim()
+                if (newName.isNotEmpty()) {
+                    val success = authManager.callAttr("cambiar_nombre_usuario", currentUsername, newName).toBoolean()
+                    if (success) {
+                        Toast.makeText(this, "Nombre actualizado a $newName", Toast.LENGTH_SHORT).show()
+                        currentUsername = newName // Actualizamos la variable local
+                        loadProfileData() // Recargamos la vista
+                    } else {
+                        Toast.makeText(this, "Error: El nombre ya existe", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+    // --- DIÁLOGO CAMBIAR CONTRASEÑA ---
+    private fun showChangePasswordDialog() {
+        val layout = LinearLayout(this)
+        layout.orientation = LinearLayout.VERTICAL
+        layout.setPadding(50, 20, 50, 20)
+
+        val inputOld = EditText(this)
+        inputOld.hint = "Contraseña Actual"
+        layout.addView(inputOld)
+
+        val inputNew = EditText(this)
+        inputNew.hint = "Nueva Contraseña"
+        layout.addView(inputNew)
+
+        AlertDialog.Builder(this)
+            .setTitle("Cambiar Contraseña")
+            .setView(layout)
+            .setPositiveButton("Actualizar") { _, _ ->
+                val oldPass = inputOld.text.toString().trim()
+                val newPass = inputNew.text.toString().trim()
+
+                if (oldPass.isNotEmpty() && newPass.isNotEmpty()) {
+                    val success = authManager.callAttr("cambiar_password", currentUsername, oldPass, newPass).toBoolean()
+                    if (success) {
+                        Toast.makeText(this, "Contraseña actualizada correctamente", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Error: Contraseña actual incorrecta", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
 }
