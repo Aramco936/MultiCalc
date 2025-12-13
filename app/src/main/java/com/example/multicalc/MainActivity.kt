@@ -73,4 +73,11 @@ class MainActivity : AppCompatActivity() {
 
         startActivity(intent)
     }
+
+    fun launchGraficador() {
+        val intent = Intent(this, GraficadorActivity::class.java)
+        // Asumiendo que ya tienes currentUsername como variable de clase en MainActivity
+        intent.putExtra("EXTRA_USERNAME", currentUsername)
+        startActivity(intent)
+    }
 }
