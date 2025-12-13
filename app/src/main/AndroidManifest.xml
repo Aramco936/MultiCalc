@@ -31,6 +31,9 @@
             android:name=".DerivadasActivity"
             android:exported="false" />
         <activity
+            android:name=".IntegralesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConversionesActivity"
             android:exported="false" />
         <activity
@@ -48,6 +51,11 @@
         <activity
             android:name=".PreguntasActivity"
             android:exported="false" />
+      
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+
         </application>
 
 </manifest>

@@ -62,7 +62,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardHistorial.setOnClickListener {
-            Toast.makeText(this, "Abriendo Historial", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
         }
     }
     private fun navigateToProfile() {

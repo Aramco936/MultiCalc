@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 
-class DerivadasActivity : AppCompatActivity() {
+class IntegralesActivity : AppCompatActivity() {
 
     private lateinit var etFuncion: EditText
     private lateinit var etLiteral: EditText
@@ -19,7 +19,7 @@ class DerivadasActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_derivadas)
+        setContentView(R.layout.activity_integrales)
 
         //Habilitar chaquopy
         if (!Python.isStarted()) {
@@ -68,7 +68,7 @@ class DerivadasActivity : AppCompatActivity() {
             val modulo = py.getModule("calculadora_simbolica")
 
 
-            val resultado = modulo.callAttr("derivar", funcion, literal)
+            val resultado = modulo.callAttr("integrar", funcion, literal)
 
             // Detectar si es booleano
             val esBoolean = try {
