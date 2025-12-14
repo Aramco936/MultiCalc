@@ -148,54 +148,54 @@ class GraficadorActivity : AppCompatActivity() {
             Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
-/*
-    // Función para guardar la gráfica en almacenamiento interno
-    private fun guardarGrafica(bitmap: Bitmap): String {
-        val timestamp = System.currentTimeMillis()
-        val carpeta = getExternalFilesDir(null)!! // Carpeta externa de la app
-        if (!carpeta.exists()) carpeta.mkdirs()
+    /*
+        // Función para guardar la gráfica en almacenamiento interno
+        private fun guardarGrafica(bitmap: Bitmap): String {
+            val timestamp = System.currentTimeMillis()
+            val carpeta = getExternalFilesDir(null)!! // Carpeta externa de la app
+            if (!carpeta.exists()) carpeta.mkdirs()
 
-        val file = File(carpeta, "grafica_$timestamp.png")
-        FileOutputStream(file).use { out ->
+            val file = File(carpeta, "grafica_$timestamp.png")
+            FileOutputStream(file).use { out ->
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+            }
+
+            // Mostrar ruta para verificar
+            Toast.makeText(this, "Gráfica guardada en: ${file.absolutePath}", Toast.LENGTH_LONG).show()
+            Log.d("Graficador", "Gráfica guardada en: ${file.absolutePath}")
+
+            return file.absolutePath
+        }
+    */
+    private fun guardarGrafica(bitmap: Bitmap, username: String): String {
+        val timestamp = System.currentTimeMillis()
+
+        // 1. CARPETA BASE: Almacenamiento externo privado de la aplicación
+        val baseDir = getExternalFilesDir(null)
+        if (baseDir == null) {
+            Log.e("Graficador", "Error: No se puede acceder al almacenamiento externo.")
+            return "ERROR_STORAGE"
+        }
+
+        // 2. CARPETA PERSONALIZADA DEL USUARIO: Base/usuario_logeado/graficas/
+        // Esto aísla el historial de este usuario.
+        val carpetaUsuario = File(baseDir, username)
+        val carpetaGraficas = File(carpetaUsuario, "graficas")
+
+        // Crear las carpetas si no existen
+        if (!carpetaGraficas.exists()) carpetaGraficas.mkdirs()
+
+        val archivo = File(carpetaGraficas, "grafica_$timestamp.png")
+
+        FileOutputStream(archivo).use { out ->
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
         }
 
-        // Mostrar ruta para verificar
-        Toast.makeText(this, "Gráfica guardada en: ${file.absolutePath}", Toast.LENGTH_LONG).show()
-        Log.d("Graficador", "Gráfica guardada en: ${file.absolutePath}")
+        Toast.makeText(this, "Guardada para $username: ${archivo.absolutePath}", Toast.LENGTH_LONG).show()
+        Log.d("Graficador", "Guardada para $username: ${archivo.absolutePath}")
 
-        return file.absolutePath
+        // El path retornado se puede usar para ligar el registro en una base de datos o JSON si es necesario
+        return archivo.absolutePath
     }
-*/
-private fun guardarGrafica(bitmap: Bitmap, username: String): String {
-    val timestamp = System.currentTimeMillis()
-
-    // 1. CARPETA BASE: Almacenamiento externo privado de la aplicación
-    val baseDir = getExternalFilesDir(null)
-    if (baseDir == null) {
-        Log.e("Graficador", "Error: No se puede acceder al almacenamiento externo.")
-        return "ERROR_STORAGE"
-    }
-
-    // 2. CARPETA PERSONALIZADA DEL USUARIO: Base/usuario_logeado/graficas/
-    // Esto aísla el historial de este usuario.
-    val carpetaUsuario = File(baseDir, username)
-    val carpetaGraficas = File(carpetaUsuario, "graficas")
-
-    // Crear las carpetas si no existen
-    if (!carpetaGraficas.exists()) carpetaGraficas.mkdirs()
-
-    val archivo = File(carpetaGraficas, "grafica_$timestamp.png")
-
-    FileOutputStream(archivo).use { out ->
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
-    }
-
-    Toast.makeText(this, "Guardada para $username: ${archivo.absolutePath}", Toast.LENGTH_LONG).show()
-    Log.d("Graficador", "Guardada para $username: ${archivo.absolutePath}")
-
-    // El path retornado se puede usar para ligar el registro en una base de datos o JSON si es necesario
-    return archivo.absolutePath
-}
 
 }
