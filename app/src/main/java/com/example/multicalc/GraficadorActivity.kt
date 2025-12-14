@@ -129,25 +129,18 @@ class GraficadorActivity : AppCompatActivity() {
 
             // Cargar el bitmap generado
             val bitmap = BitmapFactory.decodeFile(rutaCompleta)
+
             if (bitmap != null) {
+                // Mostrar la imagen en la pantalla
                 idImageview.setImageBitmap(bitmap)
                 Toast.makeText(this, "Gráfica generada exitosamente", Toast.LENGTH_SHORT).show()
 
                 // Guardar el bitmap en almacenamiento interno persistente
-                val nombreGuardado = guardarGrafica(bitmap)
-                Log.d("Graficador", "Gráfica guardada como: $nombreGuardado")
-            } else {
-                Toast.makeText(this, "Error al cargar la imagen", Toast.LENGTH_SHORT).show()
-            }
-
-            // Si el bitmap se cargó exitosamente:
-            if (bitmap != null) {
-                idImageview.setImageBitmap(bitmap)
-                Toast.makeText(this, "Gráfica generada exitosamente", Toast.LENGTH_SHORT).show()
-
-                // LLAMADA MODIFICADA: Incluye el usuario actual
                 val nombreGuardado = guardarGrafica(bitmap, currentUsername)
                 Log.d("Graficador", "Gráfica guardada como: $nombreGuardado")
+
+            } else {
+                Toast.makeText(this, "Error al cargar la imagen", Toast.LENGTH_SHORT).show()
             }
 
         } catch (e: Exception) {

@@ -85,7 +85,7 @@ class AuthManager:
                 'racha_dias': usuario.racha_dias,
                 'foto_url': usuario.foto_url,
                 'cursos_completados': usuario.cursos_completados,
-                'stats_examenes': u.stats_examenes
+                'stats_examenes': usuario.stats_examenes
             }
         try:
             with open(self.file_path, 'w') as f:
@@ -196,7 +196,7 @@ class AuthManager:
                 "racha_dias": usuario.racha_dias,
                 "foto_url": usuario.foto_url,
                 "cursos_completados": usuario.cursos_completados,
-                "stats_examenes": u.stats_examenes
+                "stats_examenes": usuario.stats_examenes
             }
         return None
 

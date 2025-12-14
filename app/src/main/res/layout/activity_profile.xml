@@ -1,173 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F5F5F5">
+    android:background="#F5F5F5"
+    android:fillViewport="true">
 
-    <!-- Foto de perfil -->
-    <ImageView
-        android:id="@+id/iv_profile_pic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_launcher_foreground"
-        android:background="@android:color/darker_gray"
-        android:contentDescription="Foto de perfil"
-        android:layout_marginTop="24dp" />
-
-    <!-- Nombre de usuario -->
-    <TextView
-        android:id="@+id/tv_profile_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:fontFamily="monospace"
-        android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/iv_profile_pic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:text="NombreDeUsuario" />
-
-    <!-- Racha de días -->
-    <TextView
-        android:id="@+id/tv_racha_dias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="#757575"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profile_username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:text="Racha: 0 días" />
-
-    <!-- Título: Avance en Módulos -->
-    <TextView
-        android:id="@+id/tv_seccion_avance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Avance en Módulos"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:fontFamily="monospace"
-        app:layout_constraintTop_toBottomOf="@+id/tv_racha_dias"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="32dp" />
-
-    <!-- Avance Simbólico -->
-    <TextView
-        android:id="@+id/tv_avance_simbolico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_seccion_avance"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
-        android:textColor="#424242"
-        android:text="Simbólico: 0 %" />
-
-    <!-- Avance Métodos Numéricos -->
-    <TextView
-        android:id="@+id/tv_avance_metodos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_avance_simbolico"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:textColor="#424242"
-        android:text="Métodos Numéricos: 0 %" />
-
-    <!-- Avance Conversores -->
-    <TextView
-        android:id="@+id/tv_avance_conversores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_avance_metodos"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:textColor="#424242"
-        android:text="Conversores: 0 %" />
-
-    <!-- Botón volver (opcional) -->
-    <Button
-        android:id="@+id/btn_back_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        android:textAllCaps="false"
-        android:backgroundTint="#00BCD4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="24dp" />
-
-    <Button
-        android:id="@+id/btn_edit_username"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="✏️ Editar Nombre"
-        android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profile_username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btn_change_password"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="🔒 Cambiar Contraseña"
-        android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_edit_username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_header_exams"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="📊 Rendimiento en Exámenes"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_change_password"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_exam_streak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="🔥 Racha Exámenes: 0"
-        app:layout_constraintTop_toBottomOf="@+id/tv_header_exams"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:id="@+id/tv_exam_levels"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fácil: 0 | Medio: 0 | Difícil: 0"
-        app:layout_constraintTop_toBottomOf="@+id/tv_exam_streak"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="5dp"/>
-
-    <Button
-        android:id="@+id/btn_logout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cerrar Sesión"
-        android:backgroundTint="#D32F2F"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_exam_levels"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/iv_profile_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="Foto de perfil"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_profile_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="monospace"
+            android:text="NombreDeUsuario"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_profile_pic" />
+
+        <Button
+            android:id="@+id/btn_edit_username"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:text="✏️ Editar Nombre"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_username" />
+
+        <Button
+            android:id="@+id/btn_change_password"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="🔒 Cambiar Contraseña"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edit_username" />
+
+        <TextView
+            android:id="@+id/tv_racha_dias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Racha: 0 días"
+            android:textColor="#757575"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_change_password" />
+
+        <TextView
+            android:id="@+id/tv_seccion_avance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="monospace"
+            android:text="Avance en Módulos"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_racha_dias" />
+
+        <TextView
+            android:id="@+id/tv_avance_simbolico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Simbólico: 0 %"
+            android:textColor="#424242"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_seccion_avance" />
+
+        <TextView
+            android:id="@+id/tv_avance_metodos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Métodos Numéricos: 0 %"
+            android:textColor="#424242"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_avance_simbolico" />
+
+        <TextView
+            android:id="@+id/tv_avance_conversores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Conversores: 0 %"
+            android:textColor="#424242"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_avance_metodos" />
+
+        <TextView
+            android:id="@+id/tv_header_exams"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="📊 Rendimiento en Exámenes"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_avance_conversores" />
+
+        <TextView
+            android:id="@+id/tv_exam_streak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="🔥 Racha Exámenes: 0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_exams" />
+
+        <TextView
+            android:id="@+id/tv_exam_levels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Fácil: 0 | Medio: 0 | Difícil: 0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_exam_streak" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#D32F2F"
+            android:text="Cerrar Sesión"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_exam_levels" />
+
+        <Button
+            android:id="@+id/btn_back_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#00BCD4"
+            android:text="Volver"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_logout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

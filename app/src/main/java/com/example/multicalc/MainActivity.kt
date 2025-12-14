@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         cardGraficador.setOnClickListener {
             val intent = Intent(this, GraficadorActivity::class.java)
+            intent.putExtra("EXTRA_USERNAME", currentUsername)
             startActivity(intent)
         }
 
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         cardHistorial.setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java)
+            intent.putExtra("EXTRA_USERNAME", currentUsername)
             startActivity(intent)
         }
     }
