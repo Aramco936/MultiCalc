@@ -1,0 +1,455 @@
+{
+  "Derivadas": {
+    "Fácil": [
+      {
+        "id": "D_F_001",
+        "enunciado": "Calcula la derivada de: f(x) = 3x²",
+        "respuesta": "6*x",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_F_002",
+        "enunciado": "Calcula la derivada de: f(x) = 5x³",
+        "respuesta": "15*x**2",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_F_003",
+        "enunciado": "Calcula la derivada de: f(x) = x⁴ + 2x",
+        "respuesta": "4*x**3 + 2",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_F_004",
+        "enunciado": "Calcula la derivada de: f(x) = 7x",
+        "respuesta": "7",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_F_005",
+        "enunciado": "Calcula la derivada de: f(x) = x² + 3x + 5",
+        "respuesta": "2*x + 3",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_F_006",
+        "enunciado": "Calcula la derivada de: f(x) = 2x³ - 4x",
+        "respuesta": "6*x**2 - 4",
+        "tipo": "derivada"
+      }
+    ],
+    "Medio": [
+      {
+        "id": "D_M_001",
+        "enunciado": "Calcula la derivada de: f(x) = sin(x)",
+        "respuesta": "cos(x)",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_M_002",
+        "enunciado": "Calcula la derivada de: f(x) = cos(x)",
+        "respuesta": "-sin(x)",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_M_003",
+        "enunciado": "Calcula la derivada de: f(x) = eˣ",
+        "respuesta": "exp(x)",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_M_004",
+        "enunciado": "Calcula la derivada de: f(x) = ln(x)",
+        "respuesta": "1/x",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_M_005",
+        "enunciado": "Calcula la derivada de: f(x) = x²·sin(x)",
+        "respuesta": "2*x*sin(x) + x**2*cos(x)",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_M_006",
+        "enunciado": "Calcula la derivada de: f(x) = 3eˣ + 2x²",
+        "respuesta": "3*exp(x) + 4*x",
+        "tipo": "derivada"
+      }
+    ],
+    "Difícil": [
+      {
+        "id": "D_D_001",
+        "enunciado": "Calcula la derivada de: f(x) = sin(x²)",
+        "respuesta": "2*x*cos(x**2)",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_D_002",
+        "enunciado": "Calcula la derivada de: f(x) = eˣ·sin(x)",
+        "respuesta": "exp(x)*sin(x) + exp(x)*cos(x)",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_D_003",
+        "enunciado": "Calcula la derivada de: f(x) = ln(x²+1)",
+        "respuesta": "2*x/(x**2 + 1)",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_D_004",
+        "enunciado": "Calcula la derivada de: f(x) = (x²+1)/(x-1)",
+        "respuesta": "(2*x*(x - 1) - x**2 - 1)/(x - 1)**2",
+        "tipo": "derivada"
+      },
+      {
+        "id": "D_D_005",
+        "enunciado": "Calcula la derivada de: f(x) = √(x²+1)",
+        "respuesta": "x/sqrt(x**2 + 1)",
+        "tipo": "derivada"
+      }
+    ]
+  },
+  "Integrales": {
+    "Fácil": [
+      {
+        "id": "I_F_001",
+        "enunciado": "Calcula la integral de: f(x) = 3x²",
+        "respuesta": "x**3",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_F_002",
+        "enunciado": "Calcula la integral de: f(x) = 5x",
+        "respuesta": "5*x**2/2",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_F_003",
+        "enunciado": "Calcula la integral de: f(x) = x³",
+        "respuesta": "x**4/4",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_F_004",
+        "enunciado": "Calcula la integral de: f(x) = 2x + 3",
+        "respuesta": "x**2 + 3*x",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_F_005",
+        "enunciado": "Calcula la integral de: f(x) = 4x³ - 2x",
+        "respuesta": "x**4 - x**2",
+        "tipo": "integral"
+      }
+    ],
+    "Medio": [
+      {
+        "id": "I_M_001",
+        "enunciado": "Calcula la integral de: f(x) = sin(x)",
+        "respuesta": "-cos(x)",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_M_002",
+        "enunciado": "Calcula la integral de: f(x) = cos(x)",
+        "respuesta": "sin(x)",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_M_003",
+        "enunciado": "Calcula la integral de: f(x) = eˣ",
+        "respuesta": "exp(x)",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_M_004",
+        "enunciado": "Calcula la integral de: f(x) = 1/x",
+        "respuesta": "log(x)",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_M_005",
+        "enunciado": "Calcula la integral de: f(x) = sec²(x)",
+        "respuesta": "tan(x)",
+        "tipo": "integral"
+      }
+    ],
+    "Difícil": [
+      {
+        "id": "I_D_001",
+        "enunciado": "Calcula la integral de: f(x) = x·eˣ",
+        "respuesta": "x*exp(x) - exp(x)",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_D_002",
+        "enunciado": "Calcula la integral de: f(x) = x·sin(x)",
+        "respuesta": "-x*cos(x) + sin(x)",
+        "tipo": "integral"
+      },
+      {
+        "id": "I_D_003",
+        "enunciado": "Calcula la integral de: f(x) = 1/(x²+1)",
+        "respuesta": "atan(x)",
+        "tipo": "integral"
+      }
+    ]
+  },
+  "Conversiones": {
+    "Fácil": [
+      {
+        "id": "C_F_001",
+        "enunciado": "Convierte 5 kilogramos a gramos",
+        "respuesta": "5000",
+        "tipo": "conversion",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "C_F_002",
+        "enunciado": "Convierte 100 centímetros a metros",
+        "respuesta": "1",
+        "tipo": "conversion",
+        "tolerancia": 0.01
+      },
+      {
+        "id": "C_F_003",
+        "enunciado": "Convierte 2 litros a mililitros",
+        "respuesta": "2000",
+        "tipo": "conversion",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "C_F_004",
+        "enunciado": "Convierte 1000 gramos a kilogramos",
+        "respuesta": "1",
+        "tipo": "conversion",
+        "tolerancia": 0.01
+      },
+      {
+        "id": "C_F_005",
+        "enunciado": "Convierte 5 metros a centímetros",
+        "respuesta": "500",
+        "tipo": "conversion",
+        "tolerancia": 0.1
+      }
+    ],
+    "Medio": [
+      {
+        "id": "C_M_001",
+        "enunciado": "Convierte 5 millas a kilómetros (1 milla = 1.60934 km)",
+        "respuesta": "8.0467",
+        "tipo": "conversion",
+        "tolerancia": 0.01
+      },
+      {
+        "id": "C_M_002",
+        "enunciado": "Convierte 10 libras a kilogramos (1 lb = 0.453592 kg)",
+        "respuesta": "4.53592",
+        "tipo": "conversion",
+        "tolerancia": 0.01
+      },
+      {
+        "id": "C_M_003",
+        "enunciado": "Convierte 100°F a °C. Usa: C = (F - 32) × 5/9",
+        "respuesta": "37.78",
+        "tipo": "conversion",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "C_M_004",
+        "enunciado": "Convierte 2 galones a litros (1 galón = 3.78541 L)",
+        "respuesta": "7.57082",
+        "tipo": "conversion",
+        "tolerancia": 0.01
+      }
+    ],
+    "Difícil": [
+      {
+        "id": "C_D_001",
+        "enunciado": "Convierte 300 Kelvin a °C",
+        "respuesta": "26.85",
+        "tipo": "conversion",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "C_D_002",
+        "enunciado": "Convierte 50 metros cúbicos a litros",
+        "respuesta": "50000",
+        "tipo": "conversion",
+        "tolerancia": 1
+      },
+      {
+        "id": "C_D_003",
+        "enunciado": "Convierte 5 toneladas a libras (1 ton = 1000 kg, 1 kg = 2.20462 lb)",
+        "respuesta": "11023.1",
+        "tipo": "conversion",
+        "tolerancia": 1
+      }
+    ]
+  },
+  "Sistemas numéricos": {
+    "Fácil": [
+      {
+        "id": "SN_F_001",
+        "enunciado": "Convierte el número decimal 10 a binario",
+        "respuesta": "1010",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_F_002",
+        "enunciado": "Convierte el número decimal 15 a binario",
+        "respuesta": "1111",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_F_003",
+        "enunciado": "Convierte el número decimal 8 a binario",
+        "respuesta": "1000",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_F_004",
+        "enunciado": "Convierte el número decimal 16 a hexadecimal",
+        "respuesta": "10",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_F_005",
+        "enunciado": "Convierte el número decimal 20 a hexadecimal",
+        "respuesta": "14",
+        "tipo": "sistema_numerico"
+      }
+    ],
+    "Medio": [
+      {
+        "id": "SN_M_001",
+        "enunciado": "Convierte el número decimal 128 a binario",
+        "respuesta": "10000000",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_M_002",
+        "enunciado": "Convierte el número decimal 255 a hexadecimal",
+        "respuesta": "FF",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_M_003",
+        "enunciado": "Convierte el número decimal 64 a octal",
+        "respuesta": "100",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_M_004",
+        "enunciado": "Convierte el número binario 11010 a decimal",
+        "respuesta": "26",
+        "tipo": "sistema_numerico"
+      }
+    ],
+    "Difícil": [
+      {
+        "id": "SN_D_001",
+        "enunciado": "Convierte el número decimal 1024 a hexadecimal",
+        "respuesta": "400",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_D_002",
+        "enunciado": "Convierte el número hexadecimal 2AF a decimal",
+        "respuesta": "687",
+        "tipo": "sistema_numerico"
+      },
+      {
+        "id": "SN_D_003",
+        "enunciado": "Convierte el número binario 11111111 a hexadecimal",
+        "respuesta": "FF",
+        "tipo": "sistema_numerico"
+      }
+    ]
+  },
+  "Física": {
+    "Fácil": [
+      {
+        "id": "F_F_001",
+        "enunciado": "Un auto recorre 100 metros en 5 segundos. ¿Cuál es su velocidad en m/s?",
+        "respuesta": "20",
+        "tipo": "fisica",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "F_F_002",
+        "enunciado": "Calcula la densidad de un objeto con masa de 50 kg y volumen de 10 m³ (en kg/m³)",
+        "respuesta": "5",
+        "tipo": "fisica",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "F_F_003",
+        "enunciado": "Si una fuerza de 10 N empuja un objeto con masa de 2 kg, ¿cuál es su aceleración en m/s²? (F = m·a)",
+        "respuesta": "5",
+        "tipo": "fisica",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "F_F_004",
+        "enunciado": "Un objeto cae desde el reposo. ¿Cuál es su velocidad después de 3 segundos? (g = 10 m/s²)",
+        "respuesta": "30",
+        "tipo": "fisica",
+        "tolerancia": 0.5
+      }
+    ],
+    "Medio": [
+      {
+        "id": "F_M_001",
+        "enunciado": "Un objeto pasa de 10 m/s a 30 m/s en 4 segundos. Calcula su aceleración en m/s²",
+        "respuesta": "5",
+        "tipo": "fisica",
+        "tolerancia": 0.1
+      },
+      {
+        "id": "F_M_002",
+        "enunciado": "Calcula la energía cinética de un objeto de 5 kg moviéndose a 10 m/s (en Joules). Ec = ½mv²",
+        "respuesta": "250",
+        "tipo": "fisica",
+        "tolerancia": 1
+      },
+      {
+        "id": "F_M_003",
+        "enunciado": "Una fuerza de 50 N desplaza un objeto 10 metros. ¿Cuánto trabajo se realizó? (en Joules)",
+        "respuesta": "500",
+        "tipo": "fisica",
+        "tolerancia": 1
+      },
+      {
+        "id": "F_M_004",
+        "enunciado": "Un péndulo completa 20 oscilaciones en 40 segundos. ¿Cuál es su periodo en segundos?",
+        "respuesta": "2",
+        "tipo": "fisica",
+        "tolerancia": 0.1
+      }
+    ],
+    "Difícil": [
+      {
+        "id": "F_D_001",
+        "enunciado": "Una fuerza de 100 N desplaza un objeto 20 m con un ángulo de 60°. Calcula el trabajo (en Joules). W = F·d·cos(θ)",
+        "respuesta": "1000",
+        "tipo": "fisica",
+        "tolerancia": 10
+      },
+      {
+        "id": "F_D_002",
+        "enunciado": "Se realiza un trabajo de 1000 J en 5 segundos. ¿Cuál es la potencia en Watts?",
+        "respuesta": "200",
+        "tipo": "fisica",
+        "tolerancia": 1
+      },
+      {
+        "id": "F_D_003",
+        "enunciado": "Un objeto de 2 kg se lanza verticalmente con velocidad inicial de 20 m/s. ¿Cuál es su altura máxima? (g=10 m/s²). h = v²/(2g)",
+        "respuesta": "20",
+        "tipo": "fisica",
+        "tolerancia": 0.5
+      }
+    ]
+  }
+}

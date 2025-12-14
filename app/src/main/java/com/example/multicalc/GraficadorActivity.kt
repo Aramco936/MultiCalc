@@ -23,6 +23,7 @@ class GraficadorActivity : AppCompatActivity() {
     private lateinit var etIntervaloA: EditText
     private lateinit var etIntervaloB: EditText
     private lateinit var btnCalcular: Button
+    private lateinit var currentUsername: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,14 @@ class GraficadorActivity : AppCompatActivity() {
         if (!Python.isStarted()) {
             Python.start(AndroidPlatform(this))
         }
+        // 1. OBTENER NOMBRE DE USUARIO (PASADO DESDE MAINACTIVITY)
+        currentUsername = intent.getStringExtra("EXTRA_USERNAME")
+            ?: run {
+                // Si no hay usuario, hay un error de sesión, mejor cerrar
+                Toast.makeText(this, "Error de sesión. Vuelve a iniciar.", Toast.LENGTH_LONG).show()
+                finish()
+                return
+            }
 
         // Inicializar vistas
         idImageview = findViewById(R.id.idImageview)
@@ -131,6 +140,16 @@ class GraficadorActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error al cargar la imagen", Toast.LENGTH_SHORT).show()
             }
 
+            // Si el bitmap se cargó exitosamente:
+            if (bitmap != null) {
+                idImageview.setImageBitmap(bitmap)
+                Toast.makeText(this, "Gráfica generada exitosamente", Toast.LENGTH_SHORT).show()
+
+                // LLAMADA MODIFICADA: Incluye el usuario actual
+                val nombreGuardado = guardarGrafica(bitmap, currentUsername)
+                Log.d("Graficador", "Gráfica guardada como: $nombreGuardado")
+            }
+
         } catch (e: Exception) {
             Log.e("Graficador", "Error: ${e.message}", e)
             Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
@@ -155,23 +174,35 @@ class GraficadorActivity : AppCompatActivity() {
         return file.absolutePath
     }
 */
-    private fun guardarGrafica(bitmap: Bitmap): String {
-        val timestamp = System.currentTimeMillis()
+private fun guardarGrafica(bitmap: Bitmap, username: String): String {
+    val timestamp = System.currentTimeMillis()
 
-        // Crear carpeta graficas dentro del almacenamiento externo privado
-        val carpetaGraficas = File(getExternalFilesDir(null), "graficas")
-        if (!carpetaGraficas.exists()) carpetaGraficas.mkdirs()
-
-        val archivo = File(carpetaGraficas, "grafica_$timestamp.png")
-
-        FileOutputStream(archivo).use { out ->
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
-        }
-
-        Toast.makeText(this, "Guardada: ${archivo.absolutePath}", Toast.LENGTH_LONG).show()
-        Log.d("Graficador", "Guardada: ${archivo.absolutePath}")
-
-        return archivo.absolutePath
+    // 1. CARPETA BASE: Almacenamiento externo privado de la aplicación
+    val baseDir = getExternalFilesDir(null)
+    if (baseDir == null) {
+        Log.e("Graficador", "Error: No se puede acceder al almacenamiento externo.")
+        return "ERROR_STORAGE"
     }
+
+    // 2. CARPETA PERSONALIZADA DEL USUARIO: Base/usuario_logeado/graficas/
+    // Esto aísla el historial de este usuario.
+    val carpetaUsuario = File(baseDir, username)
+    val carpetaGraficas = File(carpetaUsuario, "graficas")
+
+    // Crear las carpetas si no existen
+    if (!carpetaGraficas.exists()) carpetaGraficas.mkdirs()
+
+    val archivo = File(carpetaGraficas, "grafica_$timestamp.png")
+
+    FileOutputStream(archivo).use { out ->
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+    }
+
+    Toast.makeText(this, "Guardada para $username: ${archivo.absolutePath}", Toast.LENGTH_LONG).show()
+    Log.d("Graficador", "Guardada para $username: ${archivo.absolutePath}")
+
+    // El path retornado se puede usar para ligar el registro en una base de datos o JSON si es necesario
+    return archivo.absolutePath
+}
 
 }

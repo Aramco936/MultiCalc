@@ -57,7 +57,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardExamenes.setOnClickListener {
-            Toast.makeText(this, "Abriendo Exámenes", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ExamenesActivity::class.java)
+            startActivity(intent)
         }
 
         cardHistorial.setOnClickListener {
@@ -71,6 +72,13 @@ class MainActivity : AppCompatActivity() {
         // 4. Pasar el nombre de usuario a ProfileActivity
         intent.putExtra("EXTRA_USERNAME", currentUsername)
 
+        startActivity(intent)
+    }
+
+    fun launchGraficador() {
+        val intent = Intent(this, GraficadorActivity::class.java)
+        // Asumiendo que ya tienes currentUsername como variable de clase en MainActivity
+        intent.putExtra("EXTRA_USERNAME", currentUsername)
         startActivity(intent)
     }
 }
