@@ -41,7 +41,7 @@
 
     </LinearLayout>
 
-    <!-- SCROLL HORIZONTAL DE CATEGORÍAS -->
+    <!-- SCROLL HORIZONTAL DE CATEGORÍAS (7 BOTONES) -->
     <HorizontalScrollView
         android:id="@+id/scrollCategorias"
         android:layout_width="0dp"
@@ -95,6 +95,36 @@
                 android:text="Trigonometría"
                 android:textAllCaps="false"
                 android:backgroundTint="#A855C4"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btnIntegrales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Integrales"
+                android:textAllCaps="false"
+                android:backgroundTint="#FF5722"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btnDerivadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Derivadas"
+                android:textAllCaps="false"
+                android:backgroundTint="#FF9800"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btnMetodosNumericos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Métodos Numéricos"
+                android:textAllCaps="false"
+                android:backgroundTint="#4CAF50"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>
