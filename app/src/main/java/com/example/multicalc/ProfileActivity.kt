@@ -3,6 +3,9 @@ package com.example.multicalc
 import android.os.Bundle
 import android.app.AlertDialog
 import android.widget.Button
+import android.content.Intent
+import android.widget.LinearLayout
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
